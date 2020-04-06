@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Screenshot 2020-04-05 at 17.53.35.png" type="Texture" id=1]
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2.58405, 14.9898 )
+
+[node name="Kinetic2D" type="KinematicBody2D"]
+position = Vector2( 0.723671, 4.07065 )
+script = ExtResource( 2 )
+
+[node name="icon" type="Sprite" parent="."]
+position = Vector2( 2.60728, 4.00757 )
+scale = Vector2( 0.476992, 0.476992 )
+texture = ExtResource( 1 )
+vframes = 2
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 4.20168, 4.16495 )
+shape = SubResource( 1 )
+
+[node name="Muzzle" type="Position2D" parent="."]
+position = Vector2( -7.54748, 4.438 )
