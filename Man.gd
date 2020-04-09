@@ -4,6 +4,7 @@ var max_speed = 300
 var bullet = preload("res://Bullet.tscn")
 var facing_right = false
 var last_fired_time = 0
+var fire_delay = 50
 
 # Called when the node enters the scene tree for the first time.
 #func _ready():
@@ -36,7 +37,7 @@ func _physics_process(delta):
 
 func shoot():
 	var time = OS.get_system_time_msecs()
-	if(time - last_fired_time > 100):
+	if(time - last_fired_time > fire_delay):
 		var b = bullet.instance()
 		b.start($Muzzle.global_position, facing_right)
 		get_parent().add_child(b)
