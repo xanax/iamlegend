@@ -1,18 +1,26 @@
 extends TileMap
 
+var size = Vector2(100, 100)
+var Movement = preload("res://Movement.gd")
+var movements = []
+var frame
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	frame = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	self.get_cell(0,0)
+	if(frame == 0):
+		movements = []
+		for y in range(size.y):
+			for x in range(size.x):
+				if(self.get_cell(x, y) == -1 && self.get_cell(x, y - 1) == 1):
+					var move = Movement.new(Vector2(x,y), Vector2(0,-1))
+					movements.append(move)
 	var p = $KinematicBody2D.position/16
-	print(self.get_cell(int(p.x), int(p.y)))
+	if(frame == 15):
+		frame = 0
+		for m in movements:
+			m.do(self)
+	else:
+		frame += 1
