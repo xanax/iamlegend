@@ -13,7 +13,7 @@ func start(start : Vector2, move : Vector2):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position += _move
+	position -= _move
 	frame+=1
 	if(frame == 16):
 		queue_free()
