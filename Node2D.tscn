@@ -36,7 +36,7 @@ tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 32, 0, 0, 32, 0, 0 )
 format = 1
-tile_data = PoolIntArray( -458734, 1, 0, 0, 1, 0, 65538, 1, 0, 196614, 1, 0, 458754, 4, 0, 458758, 4, 0 )
+tile_data = PoolIntArray( -458734, 1, 0, 0, 1, 0, 65538, 1, 0, 196614, 1, 0, 262146, 1, 0, 262152, 0, 0, 458754, 4, 0, 458758, 4, 0 )
 script = ExtResource( 4 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="TileMap"]
