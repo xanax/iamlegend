@@ -6,9 +6,8 @@
 [ext_resource path="res://TileMap.gd" type="Script" id=4]
 [ext_resource path="res://Mask.gd" type="Script" id=5]
 
-[sub_resource type="CapsuleShape2D" id=5]
-radius = 7.85204
-height = 12.3083
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 7.50874, 15.6002 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
@@ -49,6 +48,7 @@ script = ExtResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
 position = Vector2( 0.0349579, 0.0960617 )
 current = true
+zoom = Vector2( 0.5, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( 2.18629, 2.30497 )

@@ -34,14 +34,22 @@ func _physics_process(delta):
 	velocity = velocity.normalized() * delta * max_speed
 	move_and_slide(velocity)
 	velocity = Vector2.ZERO
-	update()
 	
-
-func _draw():
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		print("Collided with: ", collision.position)
-		collision.collider.get_node("Mask").collisions.append(collision.position)
+		#print("Collided with: ", collision.position)
+		# Confirm the colliding body is a TileMap
+		if collision.collider is TileMap:
+			# Find the character's position in tile coordinates
+			var tile_pos = collision.collider.world_to_map(position)
+			# Find the colliding tile position
+			collision.collider.get_node("Mask").collisions.append(collision.position)
+			tile_pos -= collision.normal
+			# Get the tile id
+			var tile_id = collision.collider.get_cellv(tile_pos)
+			if(tile_id == 4):
+				collision.collider.set_cellv(tile_pos, -1)
+
 		
 func shoot():
 	var time = OS.get_system_time_msecs()
