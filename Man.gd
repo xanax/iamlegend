@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var max_speed = 300
+var max_speed = 10000
 var bullet = preload("res://Bullet.tscn")
 var facing_right = false
 var last_fired_time = 0
@@ -15,26 +15,34 @@ func get_input():
 		shoot()
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = 1
-		faceRight()
+		#faceRight()
 	if Input.is_action_pressed("ui_left"):
 		velocity.x = -1
-		faceLeft()
+		#faceLeft()
 	if Input.is_action_pressed("ui_up"):
 		velocity.y = -1
 	if Input.is_action_pressed("ui_down"):
 		velocity.y = 1
-	if(velocity.x != 0 || velocity.y != 0):
-		$AnimatedSprite.play("run")
-	else:
-		$AnimatedSprite.stop()
+	##if(velocity.x != 0 || velocity.y != 0):
+	#	$AnimatedSprite.play("run")
+	#else:
+#		$AnimatedSprite.stop()
 	return velocity
 		
 func _physics_process(delta):
 	var velocity = get_input()
 	velocity = velocity.normalized() * delta * max_speed
-	move_and_collide(velocity)
+	move_and_slide(velocity)
 	velocity = Vector2.ZERO
+	update()
+	
 
+func _draw():
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		print("Collided with: ", collision.position)
+		collision.collider.get_node("Mask").collisions.append(collision.position)
+		
 func shoot():
 	var time = OS.get_system_time_msecs()
 	if(time - last_fired_time > fire_delay):
