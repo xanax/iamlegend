@@ -11,6 +11,7 @@ var movementIndex = 0
 var currentMovesStartIndex = 0
 var lastMovesStartIndex = 0
 var frame = 0
+var step = 1
 
 func _ready():
 	get_node("Mask").tileMap = self
@@ -21,6 +22,7 @@ func _process(delta):
 	# Start of step, make moves calculated last step
 	if(frame == 0):
 		sprites.clear()
+
 		#print("Doing moves "+str(currentMovesStartIndex)+" to "+str(movementIndex))
 		for m in range(currentMovesStartIndex, movementIndex):
 			start_sprite(movements[m])
@@ -32,7 +34,7 @@ func _process(delta):
 		currentMovesStartIndex = movementIndex
 		updateThread.spawnUpdate()
 		
-	frame = (frame + 1) % 16
+	frame = (frame + step) % 16
 	
 func updateTiles():
 	#print("Updating")
@@ -54,6 +56,6 @@ func start_sprite(movement):
 	var tile_id = get_cellv(source)
 	var tile_sprite = Tiles.type(tile_id).instance()
 	sprites.append(tile_sprite)
-	tile_sprite.start( source * cell_size, movement.move)
+	tile_sprite.start( source * cell_size, movement.move, step)
 	add_child(tile_sprite)
 	

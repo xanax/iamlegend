@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var max_speed = 10000
+var max_speed = 5000
 var bullet = preload("res://Bullet.tscn")
 var facing_right = false
 var last_fired_time = 0
@@ -48,6 +48,7 @@ func _physics_process(delta):
 			# Get the tile id
 			var tile_id = collision.collider.get_cellv(tile_pos)
 			if(tile_id == 4):
+				#collision.collider.dig_tiles.append(tile_pos)
 				collision.collider.set_cellv(tile_pos, -1)
 
 		

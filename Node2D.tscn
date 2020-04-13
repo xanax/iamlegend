@@ -50,12 +50,11 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( 2.18629, 2.30497 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
-position = Vector2( -0.0428238, -0.0307655 )
-scale = Vector2( 0.732733, 0.457771 )
+position = Vector2( 3.56177, 7.22679 )
+scale = Vector2( 0.955041, 1 )
 frames = SubResource( 4 )
 
 [node name="Muzzle" type="Position2D" parent="KinematicBody2D"]
