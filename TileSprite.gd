@@ -2,13 +2,14 @@ extends Node2D
 
 var move
 var tile_map
+var frame = 0
 
-func start(tile_map, position, move):
+func start(position, move):
 	self.position = position
 	self.move = move
-	self.tile_map = tile_map
 
 func _process(delta):
 	position -= move
-	if(tile_map.frame >= 15):
+	frame += 1
+	if(frame == 16):
 		queue_free()

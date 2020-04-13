@@ -18,7 +18,7 @@ func _init(tile_map : TileMap, function : String):
 
 	thread = Thread.new()
 	thread.start(self, "_thread_function")
-	print("started semaphore")
+	print("started UpdateThread")
 
 func _thread_function(userdata):
 	while true:
@@ -36,7 +36,7 @@ func _thread_function(userdata):
 		tile_map.call(function)
 		mutex.unlock()
 
-func increment_counter():
+func spawnUpdate():
 	semaphore.post() # Make the thread process.
 
 func get_counter():
