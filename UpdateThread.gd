@@ -18,7 +18,7 @@ func _init(tile_map : TileMap, function : String):
 
 	thread = Thread.new()
 	thread.start(self, "_thread_function")
-	print("started UpdateThread")
+	#print("started UpdateThread")
 
 func _thread_function(userdata):
 	while true:
@@ -60,5 +60,5 @@ func _exit_tree():
 	thread.wait_to_finish()
 
 	# Print the counter.
-	print("Counter is: ", counter)
+	#print("Counter is: ", counter)
 	

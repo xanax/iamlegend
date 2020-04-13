@@ -21,7 +21,7 @@ func _process(delta):
 	# Start of step, make moves calculated last step
 	if(frame == 0):
 		sprites.clear()
-		print("Doing moves "+str(currentMovesStartIndex)+" to "+str(movementIndex))
+		#print("Doing moves "+str(currentMovesStartIndex)+" to "+str(movementIndex))
 		for m in range(currentMovesStartIndex, movementIndex):
 			start_sprite(movements[m])
 			movements[m].do(self)
@@ -35,7 +35,7 @@ func _process(delta):
 	frame = (frame + 1) % 16
 	
 func updateTiles():
-	print("Updating")
+	#print("Updating")
 	for y in range(size.y):
 		for x in range(size.x):
 			var on = Tiles.attrib(get_cell(x, y))
