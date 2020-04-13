@@ -6,7 +6,7 @@
 [ext_resource path="res://TileMap.gd" type="Script" id=4]
 [ext_resource path="res://Mask.gd" type="Script" id=5]
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.50874, 15.6002 )
 
 [sub_resource type="AtlasTexture" id=2]
@@ -30,7 +30,6 @@ animations = [ {
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2( -2, 3 )
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 32, 0, 0, 32, 0, 0 )
@@ -52,7 +51,7 @@ zoom = Vector2( 0.5, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 position = Vector2( 2.18629, 2.30497 )
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
 position = Vector2( -0.0428238, -0.0307655 )

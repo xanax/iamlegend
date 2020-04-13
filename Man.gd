@@ -41,10 +41,10 @@ func _physics_process(delta):
 		# Confirm the colliding body is a TileMap
 		if collision.collider is TileMap:
 			# Find the character's position in tile coordinates
-			var tile_pos = collision.collider.world_to_map(position)
+			var tile_pos = collision.collider.world_to_map(collision.position)
 			# Find the colliding tile position
 			collision.collider.get_node("Mask").collisions.append(collision.position)
-			tile_pos -= collision.normal
+			#tile_pos -= collision.normal
 			# Get the tile id
 			var tile_id = collision.collider.get_cellv(tile_pos)
 			if(tile_id == 4):
