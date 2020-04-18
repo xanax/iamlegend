@@ -37,7 +37,7 @@ func _physics_process(delta):
 	var velocity = get_input()
 	velocity = velocity.normalized() * delta * max_speed
 	move_and_slide(velocity)
-	print(get_slide_count())
+	#print(get_slide_count())
 	#if(get_slide_count() > 2):
 	#move_and_slide(-velocity)
 	velocity = Vector2.ZERO

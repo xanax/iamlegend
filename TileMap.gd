@@ -16,6 +16,18 @@ var step = 1
 func _ready():
 	get_node("Mask").tileMap = self
 	movements.resize(1000000)
+	
+	for y in range(size.y):
+		for x in range(size.x):
+			var t = randi()%10
+			print(t)
+			if(t == 99):
+				set_cell(x, y, -1)
+			elif(t == 0):
+				set_cell(x,y, 1)
+			else:
+				set_cell(x,y, 4)
+				
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
