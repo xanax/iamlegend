@@ -15,14 +15,18 @@ func get_input():
 		shoot()
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = 1
+		position.y = round(position.y / 16.0) * 16 
 		#faceRight()
 	if Input.is_action_pressed("ui_left"):
 		velocity.x = -1
+		position.y = round(position.y / 16.0) * 16 
 		#faceLeft()
 	if Input.is_action_pressed("ui_up"):
 		velocity.y = -1
+		position.x = round((position.x - 8) / 16.0) * 16 + 8
 	if Input.is_action_pressed("ui_down"):
 		velocity.y = 1
+		position.x = round((position.x - 8) / 16.0) * 16 + 8
 	##if(velocity.x != 0 || velocity.y != 0):
 	#	$AnimatedSprite.play("run")
 	#else:
@@ -33,6 +37,9 @@ func _physics_process(delta):
 	var velocity = get_input()
 	velocity = velocity.normalized() * delta * max_speed
 	move_and_slide(velocity)
+	print(get_slide_count())
+	#if(get_slide_count() > 2):
+	#move_and_slide(-velocity)
 	velocity = Vector2.ZERO
 	
 	for i in get_slide_count():
@@ -42,8 +49,7 @@ func _physics_process(delta):
 		if collision.collider is TileMap:
 			# Find the character's position in tile coordinates
 			var tile_pos = collision.collider.world_to_map(collision.position)
-			# Find the colliding tile position
-			collision.collider.get_node("Mask").collisions.append(collision.position)
+			#collision.collider.get_node("Mask").collisions.append(collision.position)
 			#tile_pos -= collision.normal
 			# Get the tile id
 			var tile_id = collision.collider.get_cellv(tile_pos)
